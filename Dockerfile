@@ -6,16 +6,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     g++ \
     build-essential \
     curl \
-    git \
     && rm -rf /var/lib/apt/lists/*
 
 # Set up working directory
 WORKDIR /app
 
-# Clone IBEam repository
-RUN git clone https://github.com/IBEam/ibearmy.git .
-
-# Install Python dependencies
+# Copy requirements and install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
